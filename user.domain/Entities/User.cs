@@ -11,6 +11,7 @@ namespace user.domain.Entities
     {
         public UserName Name { get; private set; }
 
+        public User() { }
         public User(UserName name)
         {
             Id = Guid.NewGuid();

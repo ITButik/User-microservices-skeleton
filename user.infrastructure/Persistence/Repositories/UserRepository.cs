@@ -2,6 +2,7 @@
 using user.infrastructure.Persistence.DbContexts;
 using user.domain.Entities;
 using user.sharedkernel;
+using Microsoft.EntityFrameworkCore;
 
 namespace user.infrastructure.Persistence.Repositories;
 
@@ -24,9 +25,7 @@ public class UserRepository : IUserRepository
 
     public async Task<User?> GetByIdAsync(Guid id)
     {
-        var username = new UserName("shashi", "singh");
-        return new User(username);
-        //return await _context.Users.FindAsync(id);
+        return await _context.Users.FindAsync(id);
     }
 
     public async Task SaveChangesAsync() =>
