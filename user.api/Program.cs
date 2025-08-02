@@ -18,8 +18,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    //app.UseMiddleware<ErrorHandlerMiddleware>();
+    //app.UseDeveloperExceptionPage();
+    app.UseMiddleware<ErrorHandlerMiddleware>();
     app.UseSwagger();
     app.UseSwaggerUI();
 }

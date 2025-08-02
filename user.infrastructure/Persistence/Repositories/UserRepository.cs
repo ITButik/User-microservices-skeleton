@@ -1,8 +1,8 @@
-﻿using user.application.Interfaces;
-using user.infrastructure.Persistence.DbContexts;
+﻿using Microsoft.EntityFrameworkCore;
+using user.application.Interfaces;
 using user.domain.Entities;
-using user.sharedkernel;
-using Microsoft.EntityFrameworkCore;
+using user.infrastructure.Exceptions;
+using user.infrastructure.Persistence.DbContexts;
 
 namespace user.infrastructure.Persistence.Repositories;
 
@@ -14,21 +14,55 @@ public class UserRepository : IUserRepository
 
     public async Task AddAsync(User user)
     {
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            InfrastructureExceptionHandler.Handle(ex);
+        }
     }
 
-    public Task<IEnumerable<User>> GetAllAsync()
+    public async Task<IEnumerable<User>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            return await _context.Users.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            InfrastructureExceptionHandler.Handle(ex);
+        }
+
+        return Enumerable.Empty<User>();
     }
 
     public async Task<User?> GetByIdAsync(Guid id)
     {
-        return await _context.Users.FindAsync(id);
+        try
+        {
+            return await _context.Users.FindAsync(id);
+        }
+        catch (Exception ex)
+        {
+            InfrastructureExceptionHandler.Handle(ex);
+        }
+
+        return null;
     }
 
-    public async Task SaveChangesAsync() =>
-        await _context.SaveChangesAsync();
+    public async Task SaveChangesAsync()
+    {
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            InfrastructureExceptionHandler.Handle(ex);
+        }
+    }
 }
 
