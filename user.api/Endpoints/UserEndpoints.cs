@@ -11,8 +11,16 @@ public static class UserEndpoints
     {
         routes.MapPost("/users", async (CreateUserCommand cmd, IMediator mediator) =>
         {
-            var userId = await mediator.Send(cmd);
-            return Results.Created($"/users/{userId}", userId);
+            try
+            {
+                var userId = await mediator.Send(cmd);
+                return Results.Created($"/users/{userId}", userId);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., using ILogger)
+                return Results.Problem(ex.Message, title: "An unexpected error while creating user.", statusCode: 500);
+            }
         });
 
         routes.MapPut("/users/{id}", async (Guid id, UpdateUserCommand cmd, IMediator mediator) =>
