@@ -1,9 +1,17 @@
 using user.api.Endpoints;
 using user.api.Extensions;
 using user.api.Middlewares;
+using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog from appsettings.json
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services
 //builder.Services.AddControllers();
