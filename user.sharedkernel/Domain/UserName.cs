@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace user.sharedkernel
+namespace user.sharedkernel.Domain
 {
     public class UserName
     {

@@ -14,7 +14,7 @@ Log.Logger = new LoggerConfiguration()
 builder.Host.UseSerilog();
 
 // Add services
-//builder.Services.AddControllers();
+builder.Services.AddHttpClient(); // Register HttpClient for DI
 builder.Services.AddApplicationServices();       // MediatR, validation, etc.
 builder.Services.AddInfrastructure(builder.Configuration); // DbContext, repos
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

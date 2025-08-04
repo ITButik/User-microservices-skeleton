@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using user.application.Interfaces;
-using user.domain;
 using user.domain.Entities;
-using user.sharedkernel;
+using user.sharedkernel.Domain;
 
 namespace user.application.Commands.CreateUser;
 
