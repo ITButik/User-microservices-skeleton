@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Shared.Application;
+using Shared.Application.Mediator;
 using user.application.Interfaces;
 using user.sharedkernel.Domain;
 

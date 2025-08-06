@@ -1,4 +1,4 @@
-﻿using Shared.Application;
+﻿using Shared.Application.Mediator;
 using user.application.Commands.CreateUser;
 using user.application.Commands.UpdateUser;
 using user.application.Queries.GetUserById;

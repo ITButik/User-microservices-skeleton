@@ -1,4 +1,4 @@
-﻿using Shared.Application;
+﻿using Shared.Application.Mediator;
 
 namespace user.application.Commands.UpdateUser;
 

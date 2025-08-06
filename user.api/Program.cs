@@ -1,7 +1,7 @@
 using user.api.Endpoints;
 using user.api.Extensions;
-using user.api.Middlewares;
 using Serilog;
+using Shared.Api.Middlewares;
 
 
 var builder = WebApplication.CreateBuilder(args);

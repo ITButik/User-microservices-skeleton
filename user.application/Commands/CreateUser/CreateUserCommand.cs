@@ -1,4 +1,4 @@
-﻿using Shared.Application;
+﻿using Shared.Application.Mediator;
 using user.domain.Entities;
 
 namespace user.application.Commands.CreateUser

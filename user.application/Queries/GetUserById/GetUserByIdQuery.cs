@@ -1,4 +1,4 @@
-﻿using Shared.Application;
+﻿using Shared.Application.Mediator;
 using user.application.DTOs;
 
 namespace user.application.Queries.GetUserById;

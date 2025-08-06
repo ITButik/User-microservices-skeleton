@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Shared.Application;
+using Shared.Application.Mediator;
 using user.application.DTOs;
 using user.application.Interfaces;
 

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.Domain;
 using user.sharedkernel.Domain;
 
 namespace user.domain.Entities
 {
-    public class User : BaseEntity
+    public class User : Entity, IAggregateRoot
     {
+        public Guid Id { get; set; }
         public UserName Name { get; private set; }
 
         public User() { }

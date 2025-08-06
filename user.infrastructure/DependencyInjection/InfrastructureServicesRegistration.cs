@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using user.application.Interfaces;
-using user.infrastructure.Extensions;
 using user.infrastructure.Persistence.DbContexts;
 using user.infrastructure.Persistence.Repositories;
 using user.infrastructure.Services;
@@ -18,7 +17,6 @@ public static class InfrastructureServicesRegistration
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IUserRepository, UserRepository>();
-        services.AddTransient<IHttpClientExtensions, HttpClientExtensions>();
         services.AddSingleton<IDateTimeService, DateTimeService>();
 
         return services;

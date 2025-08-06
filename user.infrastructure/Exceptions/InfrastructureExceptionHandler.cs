@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using user.application.Exceptions;
+using Shared.Application.Exceptions;
 
 namespace user.infrastructure.Exceptions
 {
