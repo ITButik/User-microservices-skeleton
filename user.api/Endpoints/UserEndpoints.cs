@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Shared.Application;
 using user.application.Commands.CreateUser;
 using user.application.Commands.UpdateUser;
 using user.application.Queries.GetUserById;

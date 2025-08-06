@@ -1,5 +1,5 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using Shared.Application;
 using user.application.DTOs;
 using user.application.Interfaces;
 

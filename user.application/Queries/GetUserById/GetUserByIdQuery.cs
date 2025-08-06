@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Shared.Application;
 using user.application.DTOs;
 
 namespace user.application.Queries.GetUserById;
