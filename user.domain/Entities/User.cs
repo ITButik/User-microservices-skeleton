@@ -1,4 +1,5 @@
 ﻿using Shared.Domain;
+using user.domain.Events;
 using user.sharedkernel.Domain;
 
 namespace user.domain.Entities
@@ -13,6 +14,8 @@ namespace user.domain.Entities
         {
             Id = Guid.NewGuid();
             Name = name;
+
+            AddDomainEvent(new UserRegisteredDomainEvent(Id, Name));
         }
 
         public void UpdateName(UserName name)

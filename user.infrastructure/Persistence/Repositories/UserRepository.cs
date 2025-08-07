@@ -24,7 +24,7 @@ public class UserRepository : IUserRepository
         {
             _logger.LogInformation("Adding a new user with Id: {UserId}", user.Id);
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             _logger.LogInformation("User with Id: {UserId} added successfully.", user.Id);
         }
         catch (Exception ex)

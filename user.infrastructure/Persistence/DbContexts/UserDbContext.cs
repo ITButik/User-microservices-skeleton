@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shared.Application.DomainEvents;
 using Shared.Domain;
-using Shared.Infrastructure.DomainEvents;
 using user.application.Interfaces;
 using user.domain.Entities;
 

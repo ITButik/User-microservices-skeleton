@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Shared.Application.DomainEvents;
 using Shared.Application.Mediator;
 using user.application.Interfaces;
 using user.domain.Entities;
@@ -10,11 +11,13 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, Guid>
 {
     private readonly IUserRepository _repository;
     private readonly ILogger<CreateUserHandler> _logger;
+    private readonly IDomainEventDispatcher _domainEventDispatcher;
 
-    public CreateUserHandler(IUserRepository repository, ILogger<CreateUserHandler> logger)
+    public CreateUserHandler(IUserRepository repository, ILogger<CreateUserHandler> logger, IDomainEventDispatcher domainEventDispatcher)
     {
         _repository = repository;
         _logger = logger;
+        _domainEventDispatcher = domainEventDispatcher;
     }
 
     public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -28,6 +31,9 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, Guid>
 
             await _repository.AddAsync(user);
             await _repository.SaveChangesAsync();
+
+            await _domainEventDispatcher.DispatchAsync(user.DomainEvents, cancellationToken);
+            user.ClearDomainEvents();
 
             _logger.LogInformation("User created successfully with Id: {UserId}", user.Id);
 

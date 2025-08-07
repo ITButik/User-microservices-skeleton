@@ -1,6 +1,6 @@
 ﻿using Shared.Domain;
 
-namespace Shared.Infrastructure.DomainEvents;
+namespace Shared.Application.DomainEvents;
 
 public interface IDomainEventDispatcher
 {

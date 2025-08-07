@@ -1,9 +1,12 @@
 ﻿using Shared.Application.Mediator;
+using Shared.Domain;
 using Shared.Infrastructure.DependencyInjection;
 using user.application.Commands.CreateUser;
 using user.application.Commands.UpdateUser;
 using user.application.DTOs;
+using user.application.EventHandlers;
 using user.application.Queries.GetUserById;
+using user.domain.Events;
 using user.infrastructure.DependencyInjection;
 
 namespace user.api.Extensions;
@@ -16,6 +19,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IRequestHandler<CreateUserCommand, Guid>, CreateUserHandler>();
         services.AddScoped<IRequestHandler<UpdateUserCommand>, UpdateUserHandler>();
         services.AddScoped<IRequestHandler<GetUserByIdQuery, UserDto>, GetUserByIdHandler>();
+
+        services.AddScoped<IDomainEventHandler<UserRegisteredDomainEvent>, SendWelcomeEmailHandler>();
 
         //services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateUserCommand>());
         return services;
